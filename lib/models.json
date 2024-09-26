@@ -43,14 +43,14 @@
       "multiModal": true
     },
     {
-      "id": "models/gemini-1.5-pro-latest",
+      "id": "models/gemini-1.5-pro-002",
       "provider": "Google AI",
       "providerId": "google",
       "name": "Gemini Pro",
       "multiModal": true
     },
     {
-      "id": "models/gemini-1.5-flash-latest",
+      "id": "models/gemini-1.5-flash-002",
       "provider": "Google AI",
       "providerId": "google",
       "name": "Gemini Flash",
@@ -61,6 +61,13 @@
       "provider": "Mistral",
       "providerId": "mistral",
       "name": "Mistral Large",
+      "multiModal": false
+    },
+    {
+      "id": "mistral-small-latest",
+      "provider": "Mistral",
+      "providerId": "mistral",
+      "name": "Mistral Small",
       "multiModal": false
     },
     {

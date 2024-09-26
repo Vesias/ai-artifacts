@@ -50,6 +50,9 @@ export default function Home() {
       if (!error) {
         // send it to /api/sandbox
         console.log('artifact', artifact)
+        posthog.capture('artifact_generated', {
+          template: artifact?.template,
+        })
 
         const response = await fetch('/api/sandbox', {
           method: 'POST',
@@ -62,6 +65,7 @@ export default function Home() {
 
         const result = await response.json()
         console.log('result', result)
+        posthog.capture('sandbox_created', { url: result.url })
 
         setResult(result)
         setCurrentTab('artifact')
@@ -187,8 +191,8 @@ export default function Home() {
         onLanguageModelChange={handleLanguageModelChange}
         onGitHubClick={handleGitHubClick}
         onNewChat={handleNewChat}
-        apiKeyConfigurable={!process.env.NEXT_PUBLIC_USE_HOSTED_MODELS}
-        baseURLConfigurable={!process.env.NEXT_PUBLIC_USE_HOSTED_MODELS}
+        apiKeyConfigurable={!process.env.NEXT_PUBLIC_NO_API_KEY_INPUT}
+        baseURLConfigurable={!process.env.NEXT_PUBLIC_NO_BASE_URL_INPUT}
       />
 
       <div className="flex-1 flex space-x-8 w-full pt-36 pb-8 px-4">
